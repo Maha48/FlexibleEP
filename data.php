@@ -35,4 +35,8 @@ if ($result > 0) {
 } else {
      header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
+
 ?>
+<form method="Post"action="logout.php">
+<input type="submit"value="Logout">
+</form>
