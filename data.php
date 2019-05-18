@@ -1,5 +1,4 @@
 <?php
-//echo password_hash('MMLG123', PASSWORD_BCRYPT);
 require_once './vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::create(__DIR__);
 $dotenv->load();
