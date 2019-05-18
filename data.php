@@ -30,7 +30,7 @@ if ($result > 0 && password_verify($Adminpassword, $db_adminpassword)) {
     echo "Welcome Admin";
 } else {
     
-    //echo"<script> alert('username or password is Error ')</script>";
+    echo"<script> alert('username or password is Error ')</script>";
      header('Location: ' . $_SERVER['HTTP_REFERER']);
 } 
 ?>
