@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        function validationform(){
+            var validuserandpassword = document.forms['loginform']['usernameadmin'].value && document.forms['loginform']['passwordadmin'].value;
+            if (validuserandpassword == ""){
+                alert(" Enter Username and Password");
+                return false;
+
+            }
+        }
+    </script>
     <title>Login</title>
 </head>
 
 <body>
-    <form action="data.php" method="POST">
+    <form  name ="loginform"action="data.php" method="POST" onsubmit="return validationform()">
         <div id="basicdiv">
             <img id="psauimage" src="images/Prince_Sattam_Bin_Abdulaziz_University.png">
             <img id="fepimage" src="images/FEP.png">
