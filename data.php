@@ -30,8 +30,9 @@ if ($result > 0 && password_verify($Adminpassword, $db_adminpassword)) {
 } else {
     
     echo"<script> alert('username or password is Error ')</script>";
-     header('Location: ' . $_SERVER['HTTP_REFERER']);
-} 
+    echo "<script>
+    window.location = '".$_SERVER['HTTP_REFERER']."';
+    </script>";} 
 ?>
 <form method="Post" action="logout.php">
 <input type="submit" value="Logout">
