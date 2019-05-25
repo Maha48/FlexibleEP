@@ -15,6 +15,8 @@
 <body>
 <form  name ="loginform"action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 
+<!-- تقوم دالة  htmlspecialchars () بتحويل الأحرف الخاصة إلى كيانات HTML. هذا يعني أنه سيستبدل أحرف HTML مثل <and> بـ &lt؛ و &gt. هذا يمنع المهاجمين من استغلال التعليمات البرمجية عن طريق حقن كود HTML 
+ يُرجع اسم الملف الجاري تنفيذه حاليًا.$_SERVER["PHP_SELF"]-->
 <?php 
 require_once './vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::create(__DIR__);
@@ -30,7 +32,7 @@ $Database = getenv('DB');
 $Adminusername=$_POST["usernameadmin"];
 $Adminpassword=$_POST["passwordadmin"];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {//يحدد ما إذا كان الطلب عبارة عن طلب POST أو GET. يمكن أن يساعد هذا في تحديد ما إذا كان سيتم تحليل المعاملات الواردة من $ _GET أو $ _POST.
     if (!empty($Adminusername)) {//التحقق ان اسم المستخدم وكلمة المرور ليست فارغه
         if (!empty($Adminpassword)) {
             $connection = mysqli_connect($db_host, $db_username, $db_password, $Database, '8889'); // الاتصال بقاعدة البيانات 
@@ -48,12 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 header("location: data.php");//اذا كان الشرط صحيح ينتقل للصفحه 
             } else {
-                $dataerr="Incorrect"; //اذا كانت كلمة الرور واسم المستخدم خاطئه يظهر بالصفحه 
+                $dataerr="Incorrect username or password "; //اذا كانت كلمة الرور واسم المستخدم خاطئه يظهر بالصفحه 
             }
-                // echo"<script> alert('username or password is Error ')</script>";
-                // echo "<script>
-                // window.location = '".$_SERVER['HTTP_REFERER']."';
-                // </script>";} 
+                
         } 
     }
     else {
@@ -71,18 +70,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <table>
                     <tr>
                         <td class="usernameinput">Username</td>
-                        <td><input type="text" name="usernameadmin">
-                        <span class="error">* <?php echo $nameErr;?></span>
+                        <td><input type="text" name="usernameadmin"><br>
+                        <span class="error"> <?php echo $nameErr;?></span>
                     </td>
                 </tr><br>
                 <tr>
                     <td class="usernameinput">Password</td>
-                    <td><input type="password" name="passwordadmin">
-                    <span class="error">* <?php echo $passErr;?></span></td>
+                    <td><input type="password" name="passwordadmin"><br>
+                    <span class="error"> <?php echo $passErr;?></span></td>
                 </tr><br>
             </table> <br>
-            <input id="loginsubmit" type="submit" value="Login"><br>
-            <span class="error"> <?php echo  $dataerr;?></span>
+            <input id="loginsubmit" type="submit" value="Login"> <br>
+            <span class="error"> <?php echo  $dataerr;?></span><br><br>
+            <a href="updatepassord.html">Forget password?</a>
+
         </div>
     </div>
 </form>
