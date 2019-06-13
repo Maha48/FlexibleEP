@@ -54,6 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {//يحدد ما إذا كان الط�
             }
                 
         } 
+        else{
+            $passErr = "Password is required";
+        }
     }
     else {
         $passErr = "Password is required";//اذا كانت كلمة المرور واسم المستخدم فارغه يظهر بالصفحه

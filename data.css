@@ -1,0 +1,41 @@
+#wlcomeadmin{
+   color: white;
+    text-align: center;
+    padding:30px;
+    font-size: 45px;
+
+}
+#bar{
+    
+    width:100%; 
+    height: 100px;
+    margin: 0%;
+    background:rgb(54, 52, 52);
+}
+#uploadfile{
+    width:35%; 
+    
+    height: 300px;
+    margin: 2px;
+    background:#f2f7ef;
+   
+
+}
+#img{
+    width: 80px;
+    text-align: center;
+}
+#img:hover {
+    cursor: pointer;
+   width: 100px;
+   text-align: center;
+
+}
+input[type=file] {
+    display: none;
+}
+#uploaddiv{
+    text-align: center;
+    padding:50px;
+    
+}
