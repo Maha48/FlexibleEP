@@ -1,6 +1,14 @@
 <html>
-    <head>
+<head>
 <link rel="stylesheet" type="text/css" href="data.css">
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    $(".file1").click(function(){
+        $(".import").show();
+    });
+});
+</script>
 </head>
 <?php
 require_once './vendor/autoload.php';
@@ -12,62 +20,67 @@ $db_username = getenv('DB_username');
 $db_password = getenv('DB_password');
 $Database = getenv('DB');
 
-$connection=mysqli_connect($db_host,$db_username,$db_password,$Database,'8889');
+$connection = mysqli_connect($db_host, $db_username, $db_password, $Database, '8889');
 
 if (isset($_POST["import"])) {
-    
+
     $fileName = $_FILES["file"]["tmp_name"];
-    if($_FILES["file"]["size"] > 0){
+    if ($_FILES["file"]["size"] > 0) {
         $file = fopen($fileName, "r");
-        while (($column = fgetcsv($file, 110000, ";")) !== FALSE) {
+        while (($column = fgetcsv($file, 110000, ";")) !== false) {
             $sqlInsert = "INSERT into Examdata (Class_ID,Subject_ID,Student_ID,Subject_name,exam_days,exam_dates,exam_times)
             values ('" . $column[0] . "','" . $column[1] . "','" . $column[2] . "','" . $column[3] . "','" . $column[4] . "','" . $column[5] . "','" . $column[6] . "')";
-            $result=mysqli_query($connection,$sqlInsert);
-            if (! empty($result)){
-                $message="data imported to database ";
+            $result = mysqli_query($connection, $sqlInsert);
+            if (!empty($result)) {
+                $message = "Upload Done ";
+            } else {
+                $message = "Problem In Upload Data";
+
             }
-            else{ 
-                $message="problem in importing data";
-                
-            } 
 
         }
     }
 }
-if(isset($_POST['delete'])){
-    $sqldelete="delete from Examdata";
-    $result=mysqli_query($connection,$sqldelete);
+
+if (isset($_POST['delete'])) {
+    $sqldelete = "delete from Examdata";
+    $result1 = mysqli_query($connection, $sqldelete);
+    if (!empty($result1)) {
+        $message = "Deleted Done";
+    } 
 }
 ?>
-
-<div id="bar">
-<div id="wlcomeadmin">Welcome Admin</div>
-</div>
+<body id="body">
+ <div id="bar">
+ <div id="wlcomeadmin">Welcome Admin
+ </div>
+ </div>
 
 <div id="uploadfile">
-<div id="uploaddiv">    
-<div id="response" class=""><?php if(!empty($message)) { echo $message; } ?></div>
-    <div class="outer-scontainer">
-        <div class="row">
+<br>
+<div id="outer-scontainer">
+<div id="uploaddiv">
 
+<div id="response"><?php if (!empty($message)) {echo $message;}?></div>
+    <div class="row">
             <form class="form-horizontal" action="" method="post"
-                name="frmCSVImport" id="frmCSVImport" enctype="multipart/form-data">
+            name="frmCSVImport" id="frmCSVImport" enctype="multipart/form-data">
                 <div class="input-row">
-                    <label for="img">
-                        <input type="file" name="file"id="img" accept=".csv">
-                        <img src="images/upload-2.png"id="img">
-                    </label><br>
-                    <label class="col-md-4 control-label">Choose CSV
-                        File</label> 
-                    <input type="submit" name="import" value="Import"class="btn-submit">
-                       
-                        <input type="submit"value="Delete"name="delete">
-                    <br />
-
+                    <label>
+                        <input type="file" name="file"id="file" class="file1"accept=".csv">
+                        <img src="images/upload-2.png"id="file"><br>
+                    </label><br><table id="tablebtn"> <tr> <td>
+                    <label class="col-md-4 control-label">Choose CSV File to Upload </label></td>
+                    <td><input  style="display:none"type='submit'id="import" name='import' class="import"value='Import'></td></tr>
+                   <tr><td> <label> Delete The Current Data </label> </td>
+                   <td> <input type="submit"value="Delete"name="delete" id="delete"></td></tr></table>
+                    
                 </div>
-
             </form>
-        </div></div></div></div>
+        </div>
+    </div>
+</div>
+</body>
 
 
 

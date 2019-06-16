@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {//يحدد ما إذا كان الط�
             </table> <br>
             <input id="loginsubmit" type="submit" value="Login"> <br>
             <span class="error"> <?php echo  $dataerr;?></span><br><br>
-            <a href="updatepassord.html">Forget password?</a>
+            <!-- <a href="updatepassord.html">Forget password?</a> -->
 
         </div>
     </div>

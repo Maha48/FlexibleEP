@@ -1,9 +1,22 @@
+#body{
+    margin: 0%;
+}
 #wlcomeadmin{
-   color: white;
+    color: white;
     text-align: center;
     padding:30px;
     font-size: 45px;
 
+}
+#tablebtn{
+    margin: auto;
+}
+#response{
+    background:rgba(116, 121, 140, 0.61);
+    width:150px;
+    text-align: center;
+    margin: auto;
+    font-size: 20;
 }
 #bar{
     
@@ -12,21 +25,38 @@
     margin: 0%;
     background:rgb(54, 52, 52);
 }
+#import{
+    background-color:white; 
+    border: 1px solid #DDD;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 10px;
+    margin:auto;
+    font-size: 16px;
+}
+#delete{
+    background-color:white; 
+    border: 1px solid #DDD;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 10px;
+    margin:auto;
+    font-size: 16px;
+}
 #uploadfile{
     width:35%; 
-    
     height: 300px;
-    margin: 2px;
-    background:#f2f7ef;
+    margin: 0px;
+    background:#c8dadf;
    
 
 }
-#img{
+#file{
     width: 80px;
     text-align: center;
 }
-#img:hover {
-    cursor: pointer;
+#file:hover {
+   cursor: pointer;
    width: 100px;
    text-align: center;
 
@@ -36,6 +66,21 @@ input[type=file] {
 }
 #uploaddiv{
     text-align: center;
-    padding:50px;
+    padding:10px;
     
 }
+/* #import{
+    display:none;
+} */
+#outer-scontainer{
+    border:2px dashed #92b0b3;
+    height: 190px;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    padding:35px;
+}
+/* #response{
+    background:#DDD;
+
+} */
