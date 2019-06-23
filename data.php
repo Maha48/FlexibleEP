@@ -21,6 +21,14 @@ $db_password = getenv('DB_password');
 $Database = getenv('DB');
 
 $connection = mysqli_connect($db_host, $db_username, $db_password, $Database, '8889');
+$queryempty='select * From Examdata';
+$query=mysqli_query($connection,$queryempty)or die ("Error in query: $query. ".mysqli_error());
+if(mysqli_num_rows($query) > 0){
+    $message="There is data";
+
+}
+else{
+    
 
 if (isset($_POST["import"])) {
 
@@ -40,6 +48,8 @@ if (isset($_POST["import"])) {
 
         }
     }
+}
+
 }
 
 if (isset($_POST['delete'])) {
